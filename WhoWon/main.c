@@ -3,6 +3,9 @@
 // This assignment is to build a function to determine the outcome of 
 // a game of Rock, Paper, Scissors.
 
+#include "WhoWon.h"
+#include <stdio.h>
+
 int main(void) {
 
 	return 0;
