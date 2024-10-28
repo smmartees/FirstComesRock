@@ -4,3 +4,5 @@
 
 // signature for the function to determine the winner
 
+
+int whoWon(char* playerOne, char* playerTwo);
