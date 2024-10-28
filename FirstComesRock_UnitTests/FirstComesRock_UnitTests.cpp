@@ -21,6 +21,22 @@ namespace FirstComesRockUnitTests
 			int actual = whoWon(firstPlayerInput, secondPlayerInput);
 			Assert::AreEqual(expected, actual);
 		}
+		TEST_METHOD(ScissorsLosesToRock)
+		{
+			char* firstPlayerInput = "Scissors";
+			char* secondPlayerInput = "Rock";
+			int expected = 1;
+			int actual = whoWon(firstPlayerInput, secondPlayerInput);
+			Assert::AreEqual(expected, actual);
+		}
+		TEST_METHOD(ScissorsBeatPaper)
+		{
+			char* firstPlayerInput = "Scissors";
+			char* secondPlayerInput = "Paper";
+			int expected = 1;
+			int actual = whoWon(firstPlayerInput, secondPlayerInput);
+			Assert::AreEqual(expected, actual);
+		}
 		TEST_METHOD(TestMethod2)
 		{
 		}
