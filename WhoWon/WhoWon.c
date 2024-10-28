@@ -5,11 +5,12 @@
 #include <string.h>
 
 #define INVALID		0
+#define DRAW		4
 
 int whoWon(char* playerOne, char* playerTwo) {
 	int firstHand = 0;
 	int secondHand = 0;
-	int winner = 0;
+	int winner = DRAW;
 
 	// validating first player's choice
 	int rockCheck = strcmp(playerOne, "Rock");
