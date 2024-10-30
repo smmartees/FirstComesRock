@@ -3,85 +3,65 @@
 #include "WhoWon.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
-#define INVALID		0
-#define DRAW		4
 
-int whoWon(char* playerOne, char* playerTwo) {
-	int firstHand = 0;
-	int secondHand = 0;
-	int winner = DRAW;
-
-	// validating first player's choice
-	int rockCheck = strcmp(playerOne, "Rock");
-	if (rockCheck == 0)
-		firstHand = 1;
-
-	int paperCheck = strcmp(playerOne, "Paper");
-	if (paperCheck == 0)
-		firstHand = 2;
-
-	int scissorsCheck = strcmp(playerOne, "Scissors");
-	if (scissorsCheck == 0)
-		firstHand = 3;
-
-	// validating second player's choice
-	rockCheck = strcmp(playerTwo, "Rock");
-	if (rockCheck == 0)
-		secondHand = 1;
-
-	paperCheck = strcmp(playerTwo, "Paper");
-	if (paperCheck == 0)
-		secondHand = 2;
-
-	scissorsCheck = strcmp(playerTwo, "Scissors"); 
-	if (scissorsCheck == 0)
-		secondHand = 3;
-
-	if (firstHand == 0 || secondHand == 0)
-		return INVALID;
+char* whoWon(char* playerOne, char* playerTwo) {
+	char validHands[3][9] = {"Rock","Paper","Scissors"};
+	int checkPlayer;
+	bool playerOneValid = false;
+	int firstHand;
+	bool playerTwoValid = false;
+	int secondHand;
+	
+	// loops to validate input against array containing acceptable input.
+	for (int i = 0; i < 3; i++) {
+		checkPlayer = strcmp(playerOne, validHands[i]);
+		if (checkPlayer == 0) {
+			playerOneValid = true;
+			firstHand = i;
+		}
+	}
+	for (int j = 0; j < 3; j++) {
+		checkPlayer = strcmp(playerTwo, validHands[j]);
+		if (checkPlayer == 0) {
+			playerTwoValid = true;
+			secondHand = j;
+		}
+	}
+	if (!playerOneValid || !playerTwoValid) {
+		return "Invalid";
+	}
 
 	// switch case to determine winner.
 	switch (firstHand) {
+	case 0:
+		if (secondHand == 0)
+			return "Draw";
+		else if (secondHand == 1)
+			return "Player2";
+		else if (secondHand == 2) 
+			return "Player1";
+		break;
 	case 1:
-		if (secondHand == 1)
-			printf("Draw\n");
-		else if (secondHand == 2) {
-			printf("Player2");
-			winner = 2;
-		}
-		else if (secondHand == 3) {
-			printf("Player1\n");
-			winner = 1;
-		}
+		if (secondHand == 0)
+			return "Player1";
+		else if (secondHand == 1)
+			return "Draw";
+		else if (secondHand == 2)
+			return "Player2";
 		break;
 	case 2:
-		if (secondHand == 1) {
-			printf("Player1\n");
-			winner = 1;
-		}
-		else if (secondHand == 2) {
-			printf("Draw\n");
-		}
-		else if (secondHand == 3) {
-			printf("Player2\n");
-			winner = 2;
-		}
+		if (secondHand == 0)
+			return "Player2";
+		else if (secondHand == 1)
+			return "Player1";
+		else if (secondHand == 2)
+			return "Draw";
 		break;
-	case 3:
-		if (secondHand == 1) {
-			printf("Player2\n");
-			winner = 2;
-		}
-		else if (secondHand == 2) {
-			printf("Player1\n");
-			winner = 1;
-		}
-		else if (secondHand == 3) {
-			printf("Draw\n");
-		}
+	default:
+		return "Invalid";
 		break;
 	}
-
-	return winner;
+	return "Invalid";
 }
