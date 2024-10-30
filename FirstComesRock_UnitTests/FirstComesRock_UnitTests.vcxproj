@@ -169,6 +169,11 @@
     <ClInclude Include="..\WhoWon\WhoWon.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WhoWon\WhoWon.vcxproj">
+      <Project>{0377986f-57bf-4f43-bf90-90274f15fac1}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
